@@ -76,7 +76,7 @@
 
 				<?php echo $loginError; ?>
 
-                                <div><a id="createAccount" href="php/CreateAccount.php"> Create Account </a></div>
+                                <div><a id="createAccount" href="CreateAccount.php"> Create Account </a></div>
 
 			</form>
 		</div>

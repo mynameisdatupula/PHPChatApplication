@@ -4,8 +4,8 @@ $result="";
 $successful = false;
 if(isset($_POST['submit']))
 {
-    include "connection.php";
-    include "User.php";
+    include "php/connection.php";
+    include "php/User.php";
     
     $newUser = new User();
     
@@ -43,7 +43,7 @@ if(isset($_POST['submit']))
             <?php
                 if($successful == true)
                 {
-                    echo "<a href=\"../login.php\" >Go back</a>";
+                    echo "<a href=\"login.php\" >Go back</a>";
                     echo "<br>";
                 }
             ?>
