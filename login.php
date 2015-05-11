@@ -3,6 +3,7 @@
 	$unameError="";
 	$passError="";
 	$loginError="";
+        
 	session_start();
 
 	if(isset($_POST["submit"]))
@@ -19,13 +20,13 @@
 				":pass"=>$_POST['pass']
 				));
 
-                            if($prepare->fetch(PDO::FETCH_OBJ))
+                            if($row = $prepare->fetch())
                             {
 				$_SESSION['login'] = true;
                                 $_SESSION['name'] = $_POST['uname'];
+                                $_SESSION['userId'] = $row['id'];
+                          
                                 
-				$prepare->close();
-				$connection->close();
 				header("Location: http://localhost/ChatApplication/message.php");
                             }
                             else

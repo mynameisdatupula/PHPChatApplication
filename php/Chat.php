@@ -45,9 +45,36 @@ class chat
 			":chatMessage" => $this->getChatMessage()
 			));
                 
-                
-		
 	}
+        
+        public static function DisplayMessages()
+        {
+            include "connection.php";
+            
+           try
+           {
+                $prepare = $connection->prepare("SELECT  chat.chatUserId, chat.chatMessage,"
+                        . "tblusers.username FROM chat INNER JOIN tblusers ON (tblusers.id = chat.chatUserId)"
+                        . "ORDER BY chat.chatId DESC");
+
+                $prepare->execute();
+                
+                while($row = $prepare->fetch())
+                {                    
+                      ?>
+                     
+                       <span class="UserNames"><h3> <?php echo $row['username']." says";?> </h3> </span></br>
+                       <span class="ChatMessages"> <?php echo $row['chatMessage'];?>  </span></br>
+                       
+                       <?php
+
+                }
+                
+           }catch(Exception $e)
+           {
+               echo $e->getMessage();
+           }
+        }
 }
 
 
